@@ -53,7 +53,7 @@ def CryptoCLP_Core():
     _Max_Calls=7574
     set_sleep=3
     i=0
-    Currency_price={' : : '}
+    Currency_price=list()
     while i != _Max_Calls: 
         sleep(set_sleep)
         BTC=get(f'https://min-api.cryptocompare.com/data/price?fsym=btc&tsyms={_Set_Currency}').json()
@@ -65,10 +65,10 @@ def CryptoCLP_Core():
             try:err_msg=BTC['Message']
             except:err_msg=0
         else:
-            Currency_price.add('Bitcoin:'+str(BTC[_Set_Currency])+f":{SAR_Converter(BTC[_Set_Currency])}")
-            Currency_price.add('Ethereum:'+str(ETH[_Set_Currency])+f":{SAR_Converter(ETH[_Set_Currency])}")
-            Currency_price.add('Litecoin:'+str(LTC[_Set_Currency])+f":{SAR_Converter(LTC[_Set_Currency])}")
-            Currency_price.add('Binance:'+str(BNB[_Set_Currency])+f":{SAR_Converter(BNB[_Set_Currency])}")
+            Currency_price.append('Bitcoin:'+str(BTC[_Set_Currency])+f":{SAR_Converter(BTC[_Set_Currency])}")
+            Currency_price.append('Ethereum:'+str(ETH[_Set_Currency])+f":{SAR_Converter(ETH[_Set_Currency])}")
+            Currency_price.append('Litecoin:'+str(LTC[_Set_Currency])+f":{SAR_Converter(LTC[_Set_Currency])}")
+            Currency_price.append('Binance:'+str(BNB[_Set_Currency])+f":{SAR_Converter(BNB[_Set_Currency])}")
             Head()
             Currency(Currency_price,set_sleep)
             Currency_price.clear()
